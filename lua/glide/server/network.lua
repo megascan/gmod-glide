@@ -41,6 +41,11 @@ commands[Glide.CMD_UPLOAD_ENGINE_STREAM_PRESET] = function( ply )
     end
 
     local data = net.ReadData( size )
+    local data = net.ReadData(size)
+    if #data > Glide.CMD_UPLOAD_ENGINE_STREAM_PRESET_MAX_LENGTH then
+        Glide.Print( "Compressed raw data too large. (%d/%d)", #data, Glide.CMD_UPLOAD_ENGINE_STREAM_PRESET_MAX_LENGTH )
+        return
+    end
 
     data = util.Decompress( data )
     if not data then return end
@@ -71,6 +76,11 @@ commands[Glide.CMD_UPLOAD_MISC_SOUNDS_PRESET] = function( ply )
     end
 
     local data = net.ReadData( size )
+
+    if #data > Glide.CMD_UPLOAD_MISC_SOUNDS_PRESET_MAX_LENGTH then
+        Glide.Print( "Compressed raw data too large. (%d/%d)", #data, Glide.CMD_UPLOAD_MISC_SOUNDS_PRESET_MAX_LENGTH )
+        return
+    end
 
     data = util.Decompress( data )
     if not data then return end
