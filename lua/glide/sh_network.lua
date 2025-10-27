@@ -24,6 +24,9 @@ Glide.CMD_UPLOAD_ENGINE_STREAM_PRESET = 10
 Glide.CMD_UPLOAD_MISC_SOUNDS_PRESET = 11
 Glide.CMD_RELOAD_VSWEP = 13
 
+Glide.CMD_UPLOAD_MISC_SOUNDS_MAX_LENGTH = 256
+Glide.CMD_UPLOAD_ENGINE_STREAM_PRESET_MAX_LENGTH = 256
+
 function Glide.StartCommand( id, unreliable )
     net.Start( "glide.command", unreliable or false )
     net.WriteUInt( id, Glide.CMD_SIZE )
